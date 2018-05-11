@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ehcache.entity.Track" >
+
+    <insert id="insert" parameterType="com.ehcache.entity.Track" >
+       INSERT INTO qiche.track (deviceid, lng, lat, province, city, district, street, street_number, type, speed, direction, bl, tamper, bs, obdfield, time, createtime, offsetlng, offsetlat, realtime, realbl, adcode) 
+       VALUES 
+       (#{deviceid}, (select RAND()*100), (select RAND()*100), '广西壮族自治区', '南宁市'
+       , '江南区', CONCAT('五一,',(select FLOOR(RAND()*100)),'路')
+       , CONCAT(',距五一宾馆,',(select FLOOR(RAND()*100)),'米'), 6100, 1, 0, 98, 0, 0
+       , NULL, NOW(), NOW(), (select RAND()), (select RAND()), NOW(), 99, '450105')
+
+    </insert>
+    
+    <update id="update" parameterType="com.ehcache.entity.Track" >
+		update t_user 
+		set 
+		id = #{uid}
+		<if test="username != null and username !=''">
+			,username = #{username}
+		</if>
+		<if test="password != null and password !=''">
+			,password = #{password}
+		</if>
+		
+		where id=#{uid}
+	  </update>
+    
+    <select id="selectOne" resultType="com.ehcache.entity.Track" parameterType="string">
+		select 
+		
+		id as uid,
+		username,
+		password 
+		
+		from t_user 
+		where id = #{uid}
+   </select>
+    
+  	<delete id="delete" parameterType="string">
+  		delete from t_user where id = #{uid}
+  	</delete>
+  
+  
+</mapper>

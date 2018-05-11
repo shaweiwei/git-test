@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ehcache.entity.User" >
+
+    <insert id="insert" parameterType="com.ehcache.entity.User" >
+       insert into t_user (id,username,password)
+         values (#{uid},#{username},#{password})
+    </insert>
+    
+    <update id="update" parameterType="com.ehcache.entity.User" >
+		update t_user 
+		set 
+		id = #{uid}
+		<if test="username != null and username !=''">
+			,username = #{username}
+		</if>
+		<if test="password != null and password !=''">
+			,password = #{password}
+		</if>
+		
+		where id=#{uid}
+	  </update>
+    
+    <select id="selectOne" resultType="com.ehcache.entity.User" parameterType="string">
+		select 
+		
+		id as uid,
+		username,
+		password 
+		
+		from t_user 
+		where id = #{uid}
+   </select>
+    
+  	<delete id="delete" parameterType="string">
+  		delete from t_user where id = #{uid}
+  	</delete>
+  
+  
+</mapper>

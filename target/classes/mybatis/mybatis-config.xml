@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="callSettersOnNulls" value="true"/>
+		
+		<!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+        
+        <!-- 默认是true，表示设置了延迟加载时，将在第一次访问代理对象的方法时就将全部的延迟加载对象加载出来
+        设置为false时，只在我们第一次访问延迟加载的对象的时候才会从数据库加载对应的数据 -->
+        <setting name="aggressiveLazyLoading" value="fasle"/>
+        
+        <!-- 在调用指定的方法之前把所有的延迟对象都从数据库加载出来，默认是equals,clone,hashCode,toString -->
+        <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
+        
+	</settings>
+</configuration>
