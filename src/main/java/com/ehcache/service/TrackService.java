@@ -1,6 +1,7 @@
 package com.ehcache.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -38,5 +39,7 @@ public class TrackService {
 		return trackDao.save(track);
 	}
 
-	
+	public List<Track> getThreeDaysTrack(){
+		return trackDao.getThreeDaysTrack();
+	}
 }

@@ -41,5 +41,8 @@
   		delete from t_user where id = #{uid}
   	</delete>
   
+  <select id="getThreeDaysTrack" resultType="com.ehcache.entity.Track">
+		SELECT id,deviceid,lng,lat FROM qiche.track WHERE createtime BETWEEN (SELECT  date_add(NOW(), interval -3 day)) AND NOW() LIMIT 0,100
+   </select>
   
 </mapper>
